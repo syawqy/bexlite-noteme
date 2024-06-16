@@ -21,8 +21,9 @@ export const Home = ({ notes }: { notes: INote[] }) => {
       <div id="notes">
         {notes.map((note) => {
           return (
-            <main>
+            <main id={`note-${note.id}`}>
               <div>{note.content}</div>
+              <button hx-get={`/notes/${note.id}/edit`} hx-swap="none">edit</button>
               <button hx-delete={`/notes/${note.id}`} hx-target="closest main">Delete</button>
             </main>
           );
